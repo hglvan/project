@@ -72,7 +72,7 @@ define(['jquery'], function($) {
             })
 
 			// 2、加载内容
-			$('main').load('../src/html/index_main.html',function(){				 
+			$('main').load('../src/html/index_main.html',function(){
                 var currentIndex = 0,
                     time = 3000,
                     length = $('.images').length;
@@ -98,7 +98,6 @@ define(['jquery'], function($) {
 			$('footer').load('../src/html/footer.html',function(){				 
               
 			})
-
 
 
 

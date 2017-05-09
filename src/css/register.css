@@ -1,0 +1,132 @@
+@charset "UTF-8";
+.bdimg {
+  float: right;
+}
+
+/*设置注册背景*/
+.reg_box {
+  width: 100%;
+  height: 785px;
+  position: relative;
+}
+
+.reg_box .banner {
+  width: 100%;
+  height: 785px;
+  background: url(../img/register/bj.jpg) center center;
+}
+
+/*设置注册页面*/
+.reg {
+  box-sizing: content-box;
+  position: absolute;
+  width: 326px;
+  height: 459px;
+  background: #fff;
+  z-index: 5;
+  left: 55%;
+  top: 10%;
+  padding: 30px 70px;
+  padding-bottom: 130px;
+  /*设置注册底部*/
+}
+
+.reg .reg_t {
+  /*overflow*/
+}
+
+.reg .reg_t p {
+  color: #c4c4c4;
+}
+
+.reg .reg_t p span {
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.reg .reg_t .reg_r {
+  float: right;
+}
+
+.reg .reg_t .reg_r a {
+  color: #00c8ff;
+  font-size: 22px;
+}
+
+.reg ul {
+  margin-top: 60px;
+}
+
+.reg ul li {
+  height: 30px;
+  width: 326px;
+  margin-top: 30px;
+}
+
+.reg ul li input {
+  height: 36px;
+  width: 326px;
+  border: 1px #c4c4c4 solid;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.reg ul li img {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: 10px;
+}
+
+.reg ul li .code {
+  width: 150px;
+}
+
+.reg ul li #code_btn {
+  color: #00c8ff;
+  cursor: pointer;
+}
+
+.reg #reg_btn {
+  width: 326px;
+  background: #00c8ff;
+  height: 36px;
+  border: none;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.reg .pro a {
+  color: #00c8ff;
+}
+
+.reg .reg_b {
+  margin-top: 10px;
+  font-size: 12px;
+  border-top: 1px dotted #ccc;
+}
+
+.reg .reg_b i {
+  font-size: 25px;
+  color: #00c8ff;
+  margin-left: 7px;
+}
+
+.reg .reg_b i a {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.reg .error {
+  margin-top: 3px;
+}
+
+/*设置输入框聚焦时的阴影*/
+.input_active {
+  box-shadow: 0 0 7px #0dcafe;
+  border: 1px #0dcafe solid;
+}

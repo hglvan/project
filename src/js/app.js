@@ -10,8 +10,8 @@ requirejs.config({
 
     //加载路径和加载对象,省略后缀
     paths:{
-        'jquery':"../lib/jquery-3.1.1",
-        'index':"index"
+        'jquery':'../lib/jquery-3.1.1'
+       
     }
 
     
@@ -20,13 +20,15 @@ requirejs.config({
 
 //require 属于按需加载
 
-require(["jquery","index"],function($,index){
+require(["jquery","index","register"],function($,index,register){
    
     var path = location.pathname;
     // console.log(path)
-    // console.log(index.init())
+   
     if(path=="/project/src/index.html"){
             index.init();
+    }else if(path=="/project/src/register.html"){
+            register.init()
     }
    
    //  if(path=="/tugouwang/app/index/index.html"){
