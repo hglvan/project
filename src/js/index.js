@@ -6,7 +6,7 @@ define(['jquery'], function($) {
         init: function() {
             //这里的路径是以js文件夹为基准的
             // 1、主页加载头部
-            $('header').load('../src/html/index_top.html', function() {
+            $('header').load('../src/html/top.html', function() {
 
                 //设置下拉微信
                 $(".uu").hover(function() {
@@ -75,10 +75,8 @@ define(['jquery'], function($) {
 			$('main').load('../src/html/index_main.html',function(){				 
                 var currentIndex = 0,
                     time = 3000,
-                    hasStarted = false,
-
                     length = $('.images').length;
-                    console.log(length)
+                   
                 $('.images:not(:first)').hide();
 
                 function next() {
@@ -93,10 +91,15 @@ define(['jquery'], function($) {
                     $('.round span').eq(preIndex).attr("id","lb_active").siblings().attr("id","");
                 }    
                    
-                  setInterval(next, time);
-          
-             
+                  setInterval(next, time);           
 			})
+
+			//加载尾部
+			$('footer').load('../src/html/footer.html',function(){				 
+              
+			})
+
+
 
 
         }
