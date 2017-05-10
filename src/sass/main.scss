@@ -1,3 +1,13 @@
+/*设置内容整体颜色*/
+main{
+  background:#f6f6f3;
+  /*height:1500px;*/
+  min-width:1100px;
+}
+
+
+
+
 /*透明度轮播图,设置全部图片绝对定位*/
 #lb_active{background:#00c8ff;}
 .imageList img {
@@ -24,4 +34,97 @@
 			margin-left:10px;
 		}
 	}
+}
+
+.content_box{
+	margin-top:40px;
+	h1{
+		color:#000;
+		font-size:24px;
+		text-align:center;
+	}
+
+	.content_img{
+
+		width: 650px;
+    	height: 350px;
+    	float: left;
+	}
+
+.content_list{
+	height:350px;
+	margin-top: 20px;
+	background:#fff;
+	
+	line-height:2;
+	}
+
+.content_c{
+	padding:40px 20px;
+	/*display:table-cell;*/
+	position:relative;
+
+	.time{
+		text-align:center;
+	}
+	.buycar{
+		width:140px;
+		height:36px;
+		margin-top:30px;
+		background:#ff643c;
+		color:#fff;
+		border:none;
+		font-size:20px;
+	}
+	.pp{
+		position:absolute;
+		bottom:40px;
+		right:50px;
+		.buycar{
+			cursor:pointer;
+		}
+	}
+
+}
+
+}
+
+/*设置tab切换*/
+
+.tabbig{
+	margin-top:30px;
+	.tab{
+		font-size:15px;
+		font-weight:bold;
+		color:#000;
+		position:relative;
+		border-bottom:1px solid #000;
+		
+		span{
+			text-align:center;
+			width:140px;
+			display:inline-block;
+			padding-bottom:10px;
+			cursor:pointer;
+
+		}
+
+	
+	}
+		.tabimg{
+			margin-top:10px;
+			td{
+				padding:5px;
+			}
+			table{
+				display:none;
+			}
+		}
+
+
+}
+
+/*tab生成bottom下横线*/
+.tabbottom{
+	border-bottom:2px solid #00c8ff;
 }

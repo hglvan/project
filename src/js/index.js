@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery','cookie'], function($,cookie) {
 
 
     return {
@@ -7,6 +7,24 @@ define(['jquery'], function($) {
             //这里的路径是以js文件夹为基准的
             // 1、主页加载头部
             $('header').load('../src/html/top.html', function() {
+
+
+            	   if(getCookie('login')){
+                    var sCookie = getCookie('login');
+                 var aUser = sCookie ? JSON.parse(sCookie) : [];      
+                  $('#login').attr("href","").html('<span>欢迎您:<span style="color:#00c8ff">'+aUser.username+'</span></span><a href="#" id="out">[退出]</a>');
+                 
+                }
+				$('#out').click(function(){
+                  	console.log(1111)
+                  		
+                  		// cookie.removeCookie('login');
+                  		removeCookie('login');
+                  		 location.href = "../src/index.html";
+
+                  })
+
+
 
                 //设置下拉微信
                 $(".uu").hover(function() {
@@ -93,6 +111,89 @@ define(['jquery'], function($) {
                    
                   setInterval(next, time);           
 			})
+
+
+
+
+
+
+				// $(function(){
+
+					// function addZero(i){
+					// 		if(i<10){
+					// 			i = "0" + i;
+					// 		}
+					// 			return i;
+					// 		}
+
+					// (function showtime() {
+
+					// 	var nowtime = new Date();
+					// 	var endtime = new Date("2017/05/12");
+					// 	var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
+					// 	var d = parseInt(lefttime / (24 * 60 * 60));
+					// 	var h = parseInt(lefttime / (60 * 60) % 24);
+					// 	var m = parseInt(lefttime / 60 % 60);
+					// 	var s = parseInt(lefttime % 60);
+					// 	h = addZero(h);
+					// 	m = addZero(m);
+					// 	s = addZero(s);
+					// 	$(".buytime").html( d + "天" + h + "小时" + m + "分" + s+"秒");
+					// 	if(lefttime<=0){
+					// 	    clearInterval(time)
+					// 	$(".buytime").html("活动已结束");
+					// 	    return;
+					// 	}
+					// 	var time = setInterval(showtime,1000);
+					// })()
+
+				// })
+
+							
+
+			$(function(){
+
+				// 设置tab切换
+				
+				$('.tabimg').children().eq(0).show()
+
+				$('.tab').on("mouseover",">span",function(){
+
+						var idx = $(this).index();
+						$(this).addClass("tabbottom").css("color","#00c8ff").siblings().removeClass("tabbottom").css("color","")
+						$('.tabimg').children().hide().eq(idx).show();
+						$(".bigimg").attr("src","../src/img/main/p"+idx+".jpg")
+
+
+				})
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			//加载尾部
 			$('footer').load('../src/html/footer.html',function(){				 

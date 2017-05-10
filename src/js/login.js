@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery','cookie'], function($,cookie) {
 
 
     return {
@@ -47,7 +47,7 @@ define(['jquery'], function($) {
 
 
 
-            $('main').load('../src/html/register_main.html', function() {
+            $('main').load('../src/html/login_main.html', function() {
 
                 // 给input添加阴影效果
                 $('input').on('focus', function() {
@@ -90,93 +90,35 @@ define(['jquery'], function($) {
                     $('.code_error').html("");
                 })
 
-                //检查用户名称
-                var regiphone =/^[a-zA-Z]\w|[\u4e00-\u9fa5]{5,}$/;
-                $('#uname').blur(function() {
-                    var value = this.value;
-                    if (regiphone.test(value)) {
-                        bal1 = true;
-                        return false;
-                    } else {
-                        $('.iphone_error').html("账号格式不对,请重新输入").css({
-                            "color": "red",
-                            "font-size": "13px"
-                        });
-                    }
-
-                })
-
-                $('#uname').focus(function() {
-                    $('.iphone_error').html("");
-                })
-
-
-                //检查密码
-                var regpsw = /^\w{6,16}$/;
-
-                $('#psw').blur(function() {
-                    var value = this.value;
-                    if (regpsw.test(value)) {
-                        bal2 = true;
-                        return false;
-                    } else {
-
-                        $('.psw_error').html("密码格式不正确,请重新输入").css({
-                            "color": "red",
-                            "font-size": "13px"
-                        });
-                    }
-
-                })
-
-                $('#psw').focus(function() {
-                    $('.psw_error').html("");
-                })
-
-                //检查确认密码
-                $('#psws').blur(function() {
-                    var value = this.value;
-                    var $psw = $('#psw').val()
-                    if (value == $psw) {
-                        bal3 = true;
-                        return false;
-                    } else {
-                        $('.psws_error').html("两次输入的密码不匹配").css({
-                            "color": "red",
-                            "font-size": "13px"
-                        });
-                    }
-
-                })
-
-                $('#psws').focus(function() {
-                    $('.psws_error').html("");
-                })
+               
 
 
                 $('#reg_btn').click(function() {
-                    if (bal && bal1 && bal2 && bal3) {
-                    	console.log($('#uname').val(),$('#psw').val())
-                                $.post('../src/php/register.php', {
+                        bal1 = $('#uname').val();
+                        bal2 = $('#psw').val();
+
+                    if (bal && bal1 && bal2) {
+                    	
+                                $.post('../src/php/login.php', {
                                     uname: $('#uname').val(),
                                     password: $('#psw').val()
                              
                                 }, function(response) {
                                     var $obj = eval('(' + response + ')');
                                     if ($obj.state) {
-                                         console.log(888)
-                                        if(confirm('注册成功！')){
-                                            // $('input:not(#reg_btn)').val("");
-                                            location.reload();
-                                        }
-                                        ;
-                                       
+                                          var user = {
+                                            "username": bal1
+                                            };
+                                                
+                                    // cookie.setCookie('login', JSON.stringify(user), 7, '/');
+                                    setCookie('login', JSON.stringify(user), 7, '/');
+                                    location.href = "../src/index.html?username="+bal1;
                                     } else {
-                                        alert("该账户已被注册");
+                                        alert("登录失败,请重新检查信息");
                                     }
                                 })
                     } else {
-                        alert("请检查信息是否有误")
+                        alert("请检查信息是否正确输入完整")
                     }
 
                 })
