@@ -1,4 +1,4 @@
-define(['jquery','cookie'], function($,cookie) {
+define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload, carfly) {
 
 
     return {
@@ -9,20 +9,20 @@ define(['jquery','cookie'], function($,cookie) {
             $('header').load('../src/html/top.html', function() {
 
 
-            	   if(getCookie('login')){
+                if (getCookie('login')) {
                     var sCookie = getCookie('login');
-                 var aUser = sCookie ? JSON.parse(sCookie) : [];      
-                  $('#login').attr("href","").html('<span>欢迎您:<span style="color:#00c8ff">'+aUser.username+'</span></span><a href="#" id="out">[退出]</a>');
-                 
-                }
-				$('#out').click(function(){
-                  	console.log(1111)
-                  		
-                  		// cookie.removeCookie('login');
-                  		removeCookie('login');
-                  		 location.href = "../src/index.html";
+                    var aUser = sCookie ? JSON.parse(sCookie) : [];
+                    $('#login').attr("href", "").html('<span>欢迎您:<span style="color:#00c8ff">' + aUser.username + '</span></span><a href="#" id="out">[退出]</a>');
 
-                  })
+                }
+                $('#out').click(function() {
+                    console.log(1111)
+
+                    // cookie.removeCookie('login');
+                    removeCookie('login');
+                    location.href = "../src/index.html";
+
+                })
 
 
 
@@ -86,86 +86,225 @@ define(['jquery','cookie'], function($,cookie) {
                     $(this).stop(true).animate({
                         "width": 27
                     })
-                }) 
+                })
             })
 
-			// 2、加载内容
-			$('main').load('../src/html/index_main.html',function(){
+            // 2、加载内容
+            $('main').load('../src/html/index_main.html', function() {
                 var currentIndex = 0,
                     time = 3000,
                     length = $('.images').length;
-                   
+
                 $('.images:not(:first)').hide();
 
                 function next() {
                     var preIndex = currentIndex;
                     currentIndex = ++currentIndex % length;
                     play(preIndex, currentIndex);
-                 
+
                 }
 
                 function play(preIndex, currentIndex) {
                     $('.images').eq(preIndex).fadeOut(500).parent().children().eq(currentIndex).fadeIn(1000);
-                    $('.round span').eq(preIndex).attr("id","lb_active").siblings().attr("id","");
-                }    
-                   
-                  setInterval(next, time);           
-			})
+                    $('.round span').eq(preIndex).attr("id", "lb_active").siblings().attr("id", "");
+                }
+
+                setInterval(next, time);
+            })
 
 
 
 
 
 
-				// $(function(){
-
-					// function addZero(i){
-					// 		if(i<10){
-					// 			i = "0" + i;
-					// 		}
-					// 			return i;
-					// 		}
-
-					// (function showtime() {
-
-					// 	var nowtime = new Date();
-					// 	var endtime = new Date("2017/05/12");
-					// 	var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
-					// 	var d = parseInt(lefttime / (24 * 60 * 60));
-					// 	var h = parseInt(lefttime / (60 * 60) % 24);
-					// 	var m = parseInt(lefttime / 60 % 60);
-					// 	var s = parseInt(lefttime % 60);
-					// 	h = addZero(h);
-					// 	m = addZero(m);
-					// 	s = addZero(s);
-					// 	$(".buytime").html( d + "天" + h + "小时" + m + "分" + s+"秒");
-					// 	if(lefttime<=0){
-					// 	    clearInterval(time)
-					// 	$(".buytime").html("活动已结束");
-					// 	    return;
-					// 	}
-					// 	var time = setInterval(showtime,1000);
-					// })()
-
-				// })
-
-							
-
-			$(function(){
-
-				// 设置tab切换
-				
-				$('.tabimg').children().eq(0).show()
-
-				$('.tab').on("mouseover",">span",function(){
-
-						var idx = $(this).index();
-						$(this).addClass("tabbottom").css("color","#00c8ff").siblings().removeClass("tabbottom").css("color","")
-						$('.tabimg').children().hide().eq(idx).show();
-						$(".bigimg").attr("src","../src/img/main/p"+idx+".jpg")
 
 
-				})
+            // 套路
+         $(function() {
+
+
+                // function addZero(i){
+                // 		if(i<10){
+                // 			i = "0" + i;
+                // 		}
+                // 			return i;
+                // 		}
+
+                // (function showtime() {
+
+                // 	var nowtime = new Date();
+                // 	var endtime = new Date("2017/05/12");
+                // 	var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
+                // 	var d = parseInt(lefttime / (24 * 60 * 60));
+                // 	var h = parseInt(lefttime / (60 * 60) % 24);
+                // 	var m = parseInt(lefttime / 60 % 60);
+                // 	var s = parseInt(lefttime % 60);
+                // 	h = addZero(h);
+                // 	m = addZero(m);
+                // 	s = addZero(s);
+                // 	$(".buytime").html( d + "天" + h + "小时" + m + "分" + s+"秒");
+                // 	if(lefttime<=0){
+                // 	    clearInterval(time)
+                // 	$(".buytime").html("活动已结束");
+                // 	    return;
+                // 	}
+                // 	var time = setInterval(showtime,1000);
+                // })()
+
+
+                // 设置tab切换
+
+
+
+                $('.tab').on("mouseover", ">span", function() {
+
+                    var idx = $(this).index();
+                    $(this).addClass("tabbottom").css("color", "#00c8ff").siblings().removeClass("tabbottom").css("color", "")
+                    $('.tabimg').children().hide().eq(idx).show();
+                    $(".bigimg").attr("src", "../src/img/main/p" + idx + ".jpg")
+                })
+
+                //设置右侧导航条
+                $('.sidebox').on('mouseover', 'li', function() {
+
+                    $(this).addClass("side-active").siblings().removeClass("side-active");
+
+                    $(this).click(function() {
+                        var idx = $(this).index()
+                        console.log(idx)
+                        if (idx == 0) {
+                            console.log($(window).scrollTop())
+                            $('html,body').animate({
+                                scrollTop: 0
+                            }, 1000)
+                        }
+
+                    })
+
+                })
+                $('.sidebox').on('mouseout', 'li', function() {
+
+                    $(this).removeClass("side-active");
+
+                })
+
+
+
+                $(window).scroll(function() {
+                    var scrollY = this.scrollY;
+                    // console.log($(document).scrollTop())
+                    // console.log($('.sidebox').height())
+                    if (scrollY > 300) {
+                        var target = parseInt((window.innerHeight - $(".sidebox").height()) / 2) + scrollY - 300;
+                        $(".sidebox").stop(true).slideDown();
+                        // $(".sidebox").stop(true).animate({
+                        //                  		"top": target
+                        //             		 })
+
+                    } else {
+                        $(".sidebox").stop(true).slideUp('slow');
+                    }
+
+
+                })
+
+
+
+                // 加载商品列表
+                $.ajax({
+
+                    type: "get",
+                    url: "../src/php/goodslist.php",
+                    dataType: "json",
+                    success: function(data) {
+
+          $('.goodsul').html($.map(data, function(item) { //jQ中map遍历
+
+                   return `<li>
+
+			<div class="goods_img">
+			<img data-original="${item.imgurl}" height="350" width="350" alt="" class="hello">
+			<p class="yc"><a href="#">清洁</a><a href="#">保湿</a><a href="#">润肤</a></p>
+			</div>
+			<div class="goods_msg">
+				<p>${item.name}</p>
+				<div class="goods_buy clear">
+					<p class="goods_buy_l"><i>￥</i><span>${item.price}</span></p>
+					<p class="goods_buy_r"><button class="goods_car buycar">加入购物车</button></p>
+
+				</div>
+					<div class="tg">
+					<p class="tg_l" style="float:left">
+					<i></i><i>距团购结束</i><i class="buytime"></i></p>
+					<p class="tg_r" style="float:right">
+						<i>342人已购买</i>
+					</p>
+					</div>
+			</div>
+		</li>`
+                        }).join(""));
+
+
+                        //懒加载
+                        $(".hello").lazyload({
+                            effect: "fadeIn"
+                        });
+
+
+
+
+                       // 购物车飞入效果
+                        $('.buycar').on('click', function(event) {
+
+                         var img = $(this).parents('li').find('img').attr('src');
+                            console.log(this)
+                            var offset = $('#end').offset(),
+                                flyer = $('<img class="u-flyer" src="'+img+'"/>');
+                            flyer.fly({
+                                start: {
+                                    left: event.clientX,
+                                    top: event.clientY
+                                },
+                                end: {
+                                    left: offset.left,
+                                    top: offset.top - window.scrollY
+                                        // width: 20,
+                                        // height: 20
+                                }
+                            });
+                         
+                         var js = $('.js').html();
+                         js++;
+                          $('.js').html(js)
+
+                        })
+
+
+
+                    }
+                })
+
+
+
+
+                $('.preonli').hover(function() {
+                  
+                    $('.preson').show()
+                }, function() {
+
+                    $('.preson').hide()
+                })
+
+
+
+$('.gwczt').hover(function(){
+
+	$('.carbox').show();
+	console.log(9898)
+
+
+},function(){
+$('.carbox').hide();
 
 })
 
@@ -175,6 +314,7 @@ define(['jquery','cookie'], function($,cookie) {
 
 
 
+          })
 
 
 
@@ -195,10 +335,10 @@ define(['jquery','cookie'], function($,cookie) {
 
 
 
-			//加载尾部
-			$('footer').load('../src/html/footer.html',function(){				 
-              
-			})
+            //加载尾部
+            $('footer').load('../src/html/footer.html', function() {
+
+            })
 
 
 

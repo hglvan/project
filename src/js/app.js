@@ -5,14 +5,17 @@ requirejs.config({
     // baseUrl:"js",
     //设置依赖
     shim:{
-        'common_jquery':['jquery']
+        'common_jquery':['jquery'],
+        'lazyload':['jquery'],
+        'carfly':['jquery']
     },
 
     //加载路径和加载对象,省略后缀
     paths:{
         'jquery':'../lib/jquery-3.1.1',
-        "cookie":'../lib/cookiebase'
-        // 'coo':'../lib/jquery.cookie'
+        'cookie':'../lib/cookiebase',
+        'lazyload':'../lib/jquery.lazyload',
+        'carfly'  : '../lib/jquery.fly.min'
        
     }
 

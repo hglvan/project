@@ -5,7 +5,10 @@ main{
   min-width:1100px;
 }
 
-
+.content{
+	position:relative;
+	margin-bottom:30px;
+}
 
 
 /*透明度轮播图,设置全部图片绝对定位*/
@@ -49,6 +52,7 @@ main{
 		width: 650px;
     	height: 350px;
     	float: left;
+    	cursor:pointer;
 	}
 
 .content_list{
@@ -115,6 +119,7 @@ main{
 			margin-top:10px;
 			td{
 				padding:5px;
+				cursor:pointer;
 			}
 			table{
 				display:none;
@@ -127,4 +132,221 @@ main{
 /*tab生成bottom下横线*/
 .tabbottom{
 	border-bottom:2px solid #00c8ff;
+}
+
+
+/*设置侧边导航栏*/
+
+.sidebox{
+	position:absolute;
+	top:30%;
+	left:70px;
+	display:none;
+
+	li{
+		text-align:center;
+		width:60px;
+		height:60px;
+		/*line-height:60px;*/
+		background:#fff;
+		font-size:15px;
+		border-bottom:1px dotted #000;
+		line-height:26px;
+		padding-top:5px;
+		cursor:pointer;
+		i{
+			font-size:25px;
+			/*color:#00c8ff;*/
+			padding-bottom:5px;
+	
+		}
+	
+	}
+
+
+
+/*设置侧边导航栏点击效果*/
+
+.side-active{
+	background:#00c8ff;
+	color:#fff;
+}
+
+#sidefirst{
+	background:#00c8ff;
+	color:#fff;
+}
+
+}
+
+
+
+/*设置商品列表*/
+
+.content_box_center{
+
+	margin-top:30px;
+	h2{font-size:18px;color:#000;
+		span{margin-left:12px;}
+	
+	}
+	
+	ul{
+		margin-left:-25px;
+	}
+	
+	li{
+		float:left;
+		width:350px;
+		/*height: 507px;*/
+    	margin: 15px 0 0 25px;
+    	
+
+    	.goods_img{
+    		position: relative;
+    	}
+		
+		.goods_msg{
+			width:350px;
+			height:160px;
+			background:#fff;
+			padding: 18px 20px;
+			padding-top:20px;
+
+			.goods_buy{
+				margin-top:20px;
+				
+			}
+			.tg{
+				margin-top:10px;
+				border-top:1px dotted #c4c4c4;
+				line-height:25px;
+
+				i{
+
+					color:#c4c4c4;
+					font-style:normal;
+
+				}
+				.tg_l i{
+					font-size:12px;
+				}
+
+			}
+
+			.goods_buy_l{
+				float:left;
+				span{
+				font-size: 36px;
+    			color: #ff643c;
+    			font-weight:bold;
+
+    		}
+    			i{
+    				font-style: normal;
+   					 color: #ff643c;
+    				font-size: 12px;
+    				font-weight:bold;
+    			}
+			}
+			.goods_buy_r{
+				float:right;
+				/*margin-top:40px;*/
+				
+				.goods_car{
+					background: #ff643c;
+					height:30px;
+					border:none;
+					cursor:pointer;
+				}
+			}
+
+
+
+		}
+
+
+	}
+
+	.yc {
+        position:absolute;
+        bottom:0;
+        left:20%;
+        a{
+        	color:#00c8ff;
+        	margin-right: 15px;
+        	display:inline-block;
+        	border: 1px #00c8ff solid;
+        	border-radius:3px;
+        	padding:4px 11px;
+        }
+	}
+
+
+}
+
+/*设置右侧购物车*/
+
+
+.rightcar{
+
+	width:35px;
+	min-height:100%;
+	background:#6c6c6c;
+	position:fixed;
+	right:0;
+	top:0;
+	text-align:center;
+	z-index:99;
+
+	ul{
+		margin-top:200px;
+		li{margin-top:20px;}
+		li:hover{background:#00c8ff;}
+		.preonli{
+			position:relative;
+			margin-bottom:50px;
+
+			.preson{
+				position:absolute;
+				left:-115px;
+				top:0px;
+				background:#6c6c6c;
+				padding:10px;
+				z-index:23;
+				display:none;
+				width:120px;
+
+			}
+
+
+
+		}
+
+	}
+	li a{
+		
+		color:#fff;
+	}
+	li i{
+		font-size:25px;
+	}
+	
+	/*.gwczt{width:30px;line-height:2;text-align:center;}*/
+.js{width:30px;height:30px;border-radius:50%;background:rgba(237,138,22,.3);display:inline-block;position:absolute;top:-27px;color:#fff;line-height:30px;font-size:17px;}
+
+
+
+
+
+
+
+}
+
+.carbox{width:400px;height:1000px;position:fixed;right:0;top:0;background:#fff;display:none;}
+
+.u-flyer{
+	width:60px;
+	height:60px;
+	border-radius:50%;
 }
