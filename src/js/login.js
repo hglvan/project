@@ -9,7 +9,7 @@ define(['jquery','cookie'], function($,cookie) {
             $('header').load('../src/html/top.html', function() {
 
                 // 移出头部多余节点
-                $(".top_f,.search,.cart").remove();
+                $(".top_f,.search,.cart,.rightcar").remove();
                 var $img = $("<div class='bdimg'><img src='img/register/tipinfo1.jpg'></div>")
                 $(".top_c").append($img)
 
@@ -93,38 +93,38 @@ define(['jquery','cookie'], function($,cookie) {
                
 
 
-                $('#reg_btn').click(function() {
-                        bal1 = $('#uname').val();
-                        bal2 = $('#psw').val();
+            $('#reg_btn').click(function() {
+                    bal1 = $('#uname').val();
+                    bal2 = $('#psw').val();
 
-                    if (bal && bal1 && bal2) {
-                    	
-                                $.post('../src/php/login.php', {
-                                    uname: $('#uname').val(),
-                                    password: $('#psw').val()
-                             
-                                }, function(response) {
-                                    var $obj = eval('(' + response + ')');
-                                    if ($obj.state) {
-                                          var user = {
-                                            "username": bal1
-                                            };
-                                                
-                                    // cookie.setCookie('login', JSON.stringify(user), 7, '/');
-                                    setCookie('login', JSON.stringify(user), 7, '/');
-                                    location.href = "../src/index.html?username="+bal1;
-                                    } else {
-                                        alert("登录失败,请重新检查信息");
-                                    }
-                                })
-                    } else {
-                        alert("请检查信息是否正确输入完整")
-                    }
-
-                })
-
+                if (bal && bal1 && bal2) {
+                	
+                            $.post('../src/php/login.php', {
+                                uname: $('#uname').val(),
+                                password: $('#psw').val()
+                         
+                            }, function(response) {
+                                var $obj = eval('(' + response + ')');
+                                if ($obj.state) {
+                                      var user = {
+                                        "username": bal1
+                                        };
+                                            
+                                // cookie.setCookie('login', JSON.stringify(user), 7, '/');
+                                setCookie('login', JSON.stringify(user), 7, '/');
+                                location.href = "../src/index.html?username="+bal1;
+                                } else {
+                                    alert("登录失败,请重新检查信息");
+                                }
+                            })
+                } else {
+                    alert("请检查信息是否正确输入完整")
+                }
 
             })
+
+
+        })
 
             $('footer').load('../src/html/footer.html', function() {
 

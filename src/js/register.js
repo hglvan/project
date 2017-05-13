@@ -9,7 +9,7 @@ define(['jquery'], function($) {
             $('header').load('../src/html/top.html', function() {
 
                 // 移出头部多余节点
-                $(".top_f,.search,.cart").remove();
+                $(".top_f,.search,.cart,.rightcar").remove();
                 var $img = $("<div class='bdimg'><img src='img/register/tipinfo1.jpg'></div>")
                 $(".top_c").append($img)
 

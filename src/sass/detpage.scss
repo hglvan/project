@@ -1,0 +1,322 @@
+
+main{
+  background:#f6f6f3;
+  min-width:1100px;
+  overflow:hidden; /*margin高度塌陷*/
+
+}
+
+.detbox{
+	margin-top:20px;
+	/*background:#fff;*/
+	/*height:1000px;*/
+}
+i{font-style:normal;}
+
+
+.det_top{
+	font-size:15px;
+	margin-bottom: 5px;
+	background:#fff;
+	ul{
+		padding-left:20px;
+		border-bottom:2px dotted #f6f6f3;
+		overflow:hidden;font-weight:bold;
+		/*padding-left:-10px*/
+		.det_name{
+			color:#ff643c;
+		}
+	}
+	span{
+		float:left;
+		padding:10px 0px;
+	}
+	li{
+		float:left;
+		padding:10px 16px;
+
+	
+	}
+	
+
+.det_top_c{
+background:#fff;
+	.det_top_c_l{
+		line-height:1.5;
+		width:570px;
+		padding: 25px 0 25px 40px;
+		float:left;
+		height:150px;
+		i{
+			color:#ff643c;
+			font-weight:bold;
+			font-style:normal;
+		}
+	}
+
+	.det_top_c_r{
+		float:left;
+		margin-left:100px;
+	}
+
+	
+}
+
+
+}
+
+
+/*中间部分*/
+
+.det_center{
+	overflow:hidden;
+		.det_center_t{
+			
+			.det_center_t_l{
+
+				float: left;
+    			width: 650px;
+    			height: 350px;
+    			img{
+    				width: 650px;
+    			height: 350px;
+    			}
+			}
+		.det_center_t_r{
+		
+			
+			float: left;
+  		 	 width: 450px;
+   			 height: 350px;
+    		background: #fff;
+    		/*padding: 20px 0 22px 30px;*/
+    		padding-top:20px;
+    		/*margin-left:20px;*/
+		.det_times{
+				color:#c4c4c4;
+				margin-left:20px;
+			}
+		
+		.det_pri_buy{
+			margin-top:20px;
+			height:60px;
+			width:100%;
+			background:#00c8ff;
+			line-height: 60px;
+			color:#fff;
+			.s{
+				margin-left: 20px;
+			}
+			
+			.det_pirce{
+				float:left;
+				/*line-height: 36px;*/
+				/*font-size:46px;*/
+			}
+			.det_btn{
+				float:left;
+				
+				.buycar{
+					width:140px;
+					height:36px;
+					background:#ff643c;
+					border:none;
+					margin-left:130px;
+					border-radius:5px;
+    				text-align: center;
+    				font-size:20px;
+				}
+			}
+
+
+		}
+
+		.det_padd{
+			height:60px;
+			border-bottom:1px #ececec solid;
+		}
+
+		.det_pre{
+			line-height:56px;
+			/*margin-left:20px;*/
+			border-bottom:1px #ececec solid;
+			.det_pre_l{float:left;margin-left:20px;}
+			.det_pre_r{float:left;margin-left:30px;}
+		}
+		
+		.det_center_t_t{
+				ul{
+					margin-left:20px;
+					margin-top:10px;
+				}
+				li{
+					float:left;
+					margin-left:10px;
+				}
+				li:first-child{
+					width:40px;
+					height:20px;
+					background:#00c8ff;
+					text-align:center;
+					color:#fff;
+				}
+
+
+		}
+
+			}
+
+
+		}
+
+
+		.det_center_c{
+			
+			margin-top:30px;
+		.det_center_img img{
+                	width:233px;
+                	height:225px;
+                }
+			.goods_price {
+
+				height: 89px;
+   			    position: relative;
+                padding: 11px 10px 0px;
+                background:#fff;
+                width:233px;
+                
+
+                p{
+                	    /*height: 42px;*/
+   					   margin-bottom: 20px;
+    					/*overflow: hidden;*/
+                }
+				.buy_btn{
+					    width: 90px;
+					    height: 26px;
+					    position: absolute;
+					    right: 10px;
+					    /*bottom: -11px;*/
+					    text-align:center;
+					    /*line-height:20px;*/
+					    color:#fff;
+					    background: rgb(255, 100, 60);
+					    border:none;
+				}
+				.now_price{
+					float:left;
+					padding-bottom:10px;
+					padding:0 10px;
+
+				}
+
+
+
+			}
+			ul{
+				margin-left:-60px;
+			}
+		.det_center_list li{
+			/*padding:0 10px;*/
+			    margin: 20px 0 0 20px;
+			float:left;
+			margin-left:63px;
+			    width: 225px;
+   			 height: 325px;
+		}
+
+
+
+
+		}
+
+
+
+}
+
+
+/*尾部*/
+
+.det_bottom{
+	font-size:14px;;
+	margin-top:20px;
+	ul{width:240px;}
+
+	.det_bottom_l>ul li{
+		width:240px;
+		border-bottom: 1px #c4c4c4 dotted;
+		background:#fff;
+	}
+	h3{
+		width:240px;
+		height:40px;
+		background:#6c6c6c;
+		color:#fff;
+		line-height:40px;
+		padding-left:20px;
+	}
+	.det_bottom_img{
+		float:left;
+		margin-top:10px;
+	}
+
+	.det_bottom_ms{
+		float: left;
+    width:140px;
+    height:160px;
+    background:#fff;
+    line-height:2;
+    padding-top:10px;
+
+	}
+
+}
+.det_bottom_l{
+	width:240px;
+	float:left;
+}
+
+
+
+
+.detail_inforbox{
+	width: 810px;
+    float: right;
+    background:#fff;
+	}    
+
+.detail_inforbox .detail_infor_nav {
+    width: 810px;
+    height: 40px;
+    background: #6c6c6c;
+    color: #fff;
+    /*position: relative;*/
+}
+.detail_inforbox .detail_infor_nav ul {
+    float: left;
+    padding-left: 37px;
+     width: 810px;
+    height: 40px;
+
+	   a {color: #fff;}
+
+}
+
+.clearfix li{
+		float: left;
+    	margin-right: 45px;
+}
+
+.dpp_list {
+    padding: 24px 0;
+    position: relative;
+    min-height: 239px;
+}
+.dpp_list td {
+    line-height: 25px;
+}
+.dpp_list_title {
+    font-weight: bold;
+    width: 100px;
+    vertical-align: top;
+}

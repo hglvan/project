@@ -7,7 +7,8 @@ requirejs.config({
     shim:{
         'common_jquery':['jquery'],
         'lazyload':['jquery'],
-        'carfly':['jquery']
+        'carfly':['jquery'],
+        'gdszoom':['jquery']
     },
 
     //加载路径和加载对象,省略后缀
@@ -15,7 +16,9 @@ requirejs.config({
         'jquery':'../lib/jquery-3.1.1',
         'cookie':'../lib/cookiebase',
         'lazyload':'../lib/jquery.lazyload',
-        'carfly'  : '../lib/jquery.fly.min'
+        'carfly'  : '../lib/jquery.fly.min',
+        'gdszoom':'../lib/jquery.gdszoom',
+        'common':'../lib/common'
        
     }
 
@@ -25,15 +28,20 @@ requirejs.config({
 
 //require 属于按需加载
 
-require(["jquery","index","register","login"],function($,index,register,login){
+require(["jquery","index","register","login","detpage"],function($,index,register,login,detpage){
    
     var path = location.pathname;
     // console.log(path)
-   login.init()
+   // login.init();
+   // detpage.init()
     if(path=="/project/src/index.html"){
             index.init();
     }else if(path=="/project/src/register.html"){
             register.init()
+    }else if(path=="/project/src/login.html"){
+            login.init()
+    }else if(path=="/project/src/detpage.html"){
+            detpage.init()
     }
    
    //  if(path=="/tugouwang/app/index/index.html"){
