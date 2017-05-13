@@ -28,7 +28,7 @@ requirejs.config({
 
 //require 属于按需加载
 
-require(["jquery","index","register","login","detpage"],function($,index,register,login,detpage){
+require(["jquery","index","register","login","detpage","car"],function($,index,register,login,detpage,car){
    
     var path = location.pathname;
     // console.log(path)
@@ -42,8 +42,11 @@ require(["jquery","index","register","login","detpage"],function($,index,registe
             login.init()
     }else if(path=="/project/src/detpage.html"){
             detpage.init()
-    }
-   
+    }else if(path=="/project/src/car.html"){
+            car.init()
+
+
+ }
    //  if(path=="/tugouwang/app/index/index.html"){
    //      index_tgw.init();
    //  }else if(path=="/tugouwang/app/page/register.html"){

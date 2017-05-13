@@ -401,7 +401,7 @@ h3 {
 }
 
 .carbox .carboxlist .carbox_inp .car_k {
-  width: 60px;
+  width: 50px;
   height: 24px;
   float: left;
   border: 1px #e4e4e4 solid;
@@ -422,6 +422,22 @@ h3 {
 
 .carbox .carbox_bottom {
   margin-top: 20px;
+}
+
+.carbox .carbox_bottom .prep {
+  /*width:100%;*/
+  text-align: center;
+}
+
+.carbox .carbox_bottom .prep button {
+  width: 90px;
+  height: 26px;
+  color: #fff;
+  text-align: center;
+  line-height: 26px;
+  border: none;
+  background: #ff643c;
+  cursor: pointer;
 }
 
 .close {

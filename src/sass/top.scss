@@ -300,7 +300,7 @@ h3{height:50px;margin:0;text-align:center;line-height:50px;background:#ccc;width
     margin-left:10px;
     .car_k{
 
-    width: 60px;
+    width: 50px;
     height: 24px;
     float: left;
     border: 1px #e4e4e4 solid;
@@ -317,7 +317,27 @@ h3{height:50px;margin:0;text-align:center;line-height:50px;background:#ccc;width
 
 }
 
-    .carbox_bottom{margin-top:20px;}
+    .carbox_bottom{
+
+        margin-top:20px;
+
+        .prep{
+            /*width:100%;*/
+            text-align:center;
+
+
+            button{
+                width: 90px;
+                height: 26px;
+                color: #fff;
+                text-align: center;
+                line-height: 26px;
+                border:none;background: #ff643c;
+                cursor:pointer;
+            }
+        }
+
+    }
 
 
 

@@ -1,4 +1,4 @@
-define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, lazyload, carfly,common) {
+define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload, carfly) {
 
 
     return {
@@ -117,20 +117,20 @@ define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, 
 
 
             // 套路
-         $(function() {
-  
+            $(function() {
+
                 // 设置tab切换
 
                 // $('table img').onload(function(){
 
                 $('.tab').on("mouseover", ">span", function() {
 
-                    var idx = $(this).index();
-                    $(this).addClass("tabbottom").css("color", "#00c8ff").siblings().removeClass("tabbottom").css("color", "")
-                    $('.tabimg').children().hide().eq(idx).show();
-                    $(".bigimg").attr("src", "../src/img/main/p" + idx + ".jpg")
-                })
-// })
+                        var idx = $(this).index();
+                        $(this).addClass("tabbottom").css("color", "#00c8ff").siblings().removeClass("tabbottom").css("color", "")
+                        $('.tabimg').children().hide().eq(idx).show();
+                        $(".bigimg").attr("src", "../src/img/main/p" + idx + ".jpg")
+                    })
+                    // })
 
                 // function addZero(i){
                 // 		if(i<10){
@@ -208,16 +208,16 @@ define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, 
 
 
                 // 加载商品列表
-      $.ajax({
+                $.ajax({
 
                     type: "get",
                     url: "../src/php/goodslist.php",
                     dataType: "json",
                     success: function(data) {
 
-       $('.goodsul').html($.map(data, function(item) { //jQ中map遍历
+                        $('.goodsul').html($.map(data, function(item) { //jQ中map遍历
 
-                   return `<li>
+                            return `<li class="datalist">
 
 			<div class="goods_img">
 			<img data-original="${item.imgurl}" height="350" width="350" alt="" class="hello" data-guid="${item.id}">
@@ -226,7 +226,7 @@ define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, 
 			<div class="goods_msg">
 				<p>${item.name}</p>
 				<div class="goods_buy clear">
-					<p class="goods_buy_l"><i>￥</i><span>${item.price}</span></p>
+					<p class="goods_buy_l"><i>￥</i><span class="jiage">${item.price}</span></p>
 					<p class="goods_buy_r"><button class="goods_car buycar">加入购物车</button></p>
 
 				</div>
@@ -250,13 +250,13 @@ define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, 
 
 
 
-                       // 购物车飞入效果
-                     $('.buycar').on('click', function(event) {
+                        // 购物车飞入效果
+        $('.buycar').on('click', function(event) {
 
-                         var img = $(this).parents('li').find('img').attr('src');
+                            var img = $(this).parents('li').find('img').attr('src');
                             console.log(this)
                             var offset = $('#end').offset(),
-                                flyer = $('<img class="u-flyer" src="'+img+'"/>');
+                                flyer = $('<img class="u-flyer" src="' + img + '"/>');
                             flyer.fly({
                                 start: {
                                     left: event.clientX,
@@ -269,62 +269,120 @@ define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, 
                                         // height: 20
                                 }
                             });
-                         
-                         var js = $('.js').html();
-                         js++;
-                          $('.js').html(js);
-                          // 商品加载入购物车
-                          	var imgclone = $(this).parents('li').find('img').clone()[0].src;
-                          	var priceclone = $(this).parents('li').find('img').clone()[0].src;
-                          	// var oli = $('.oli').eq(0).clone();
-                          	var oli = $(`<li class="clear oli">
+
+                            var js = $('.js').html();
+                            js++;
+                            $('.js').html(js);
+                            // 商品加载入购物车
+                            var imgclone = $(this).parents('li').find('img').clone()[0].src;
+                            var priceclone = $(this).parents('li').find('.jiage').html();
+                            // var oli = $('.oli').eq(0).clone();
+                            var oli = $(`<li class="clear oli">
 		<div class="carimg"><img src="../src/img/main/1.jpg" ></div>
 		<div class="carbox_inp">
 		<p style="font-size:15px;margin-bottom:10px">贝德玛皙妍倍护防晒喷雾SPF30+200ml</p><span style="float:left;color:#ff643c;font-size:20px;">￥</span>
-		<span style="float:left;color:#ff643c;font-size:20px;margin-right:8px" class="listprice">234</span><p class="car_k"><span style="float:left;color:#ccc">-</span><input type="text" class="carnum" value="0" ><span style="float:right;color:#ccc">+</span></p></div>		
+		<span style="float:left;color:#ff643c;font-size:20px;margin-right:8px" class="listprice">${priceclone}</span><p class="car_k"><span style="float:left;color:#ccc">-</span><input type="text" class="carnum" value="0" ><span style="float:right;color:#ccc">+</span ></p><a class="cardel" style="float:left;color:#000;margin-left:5px;font-size:13px;height:24px;display:inline-block;line-height: 35px;cursor:pointer">删除</a></div>		
 		</li>`)
 
-                          	$('.carboxlist').append(oli);
-                          	oli = oli.find('img').attr("src",imgclone).find('.listprice').html();
-                          	var count=0;
-                          	$('.oli').each(function(idx,item){
+                            $('.carboxlist').append(oli);
+                            oli = oli.find('img').attr("src", imgclone).find('.listprice').html(priceclone);
+                            // $('.listprice').html(priceclone);
+                            // oli = $(this).html(priceclone);
+                            console.log(priceclone)
+                            // 计算当前总价格
+                            var count = 0;
+                            $('.oli').each(function(idx, item) {
 
-                          		count += parseInt($(this).find('.listprice').html()) 
-
-
-                          	})
-                          	$('.countpri').html(count)
-                          	console.log(count)
-
-                          	// var $span = $("<span></span>").html("&times;").addClass('close');
-                          	// $($li).append($span);
-                          	// $($li).append(imgclone);
-                          	
-
-                          	// $('.carboxlist').on('click','.close',function(){
-
-                          	// 	$(this).parent().remove();
-                          	// 	console.log(this)
-                          	// })
+                                count += parseInt($(this).find('.listprice').html())
 
 
-                          	// 设置商品cookie
-
-         //                  		var carlist = getCookie('carlist');
-									// carlist = carlist ? JSON.parse(carlist) : [];
+                            })
+                            $('.countpri').html(count)
 
 
+                            // 点击删除时重新计算价格与数量
+                            $('.carboxlist').on('click', '.cardel', function() {
+                                var count = 0;
+                                $(this).parents(".oli").remove();
+                                $('.oli').each(function(idx, item) {
 
+                                        count += parseInt($(this).find('.listprice').html())
+
+
+                                    })
+                                    // 重新计算价格
+                                $('.countpri').html(count)
+                                    // 重新计算商品数量
+                                js--;
+                                $('.js').html(js);
+
+
+                            })
+
+
+
+
+
+
+             var carlist = getCookie('carlist');    //不定义空数组，是为了匹配数量问题，所以直接获取cookie来匹配是否存在
+			carlist = carlist ? JSON.parse(carlist) : [];    //一开始如果没存在cookie,则返回为空字符，但是JSON.parse不能识别空字符，所以会报错，因此要先判断
+		
+			var currentLi =  $(this).parents('.content_list');
+            var datalist =  $(this).parents('.datalist');
+			// console.log(datalist.find('img')[currentSrc])
+			var currentGUID = currentLi.attr('data-guid');
+			var hasGoods = false;
+			for(var i=0;i<carlist.length;i++){
+				if(carlist[i].guid === currentGUID){
+							hasGoods = true;
+
+							// 如果当前商品已经存在cookie中，则商品数量+1
+							carlist[i].qty++;
+							break;  //需要得到值就立即结束的情况，则用for循环，其他循环不能提前终止
+						}
+					}			
+
+				if(!hasGoods){
+						
+						var goods = {
+							guid:currentGUID,
+							name:currentLi.find('p').eq(0).html(),
+							price:currentLi.find('.jiage').html(),
+							imgurl:currentLi.find('img').attr('src'),
+							qty:1
+						};
+
+						// 把当前商品信息写入carlist
+						carlist.push(goods);
+					}
+
+                   
+                    setCookie('carlist',JSON.stringify(carlist),5,'/');
+                    
+					
+				
+		
+
+
+              })
+
+
+        
+                        // 跳转到购物车页面
+                        $('.precar').click(function(){
+                            // location.href="./car.html";
+                              window.open("./car.html","_blank");
                         })
 
 
 
-					$('.hello').click(function(){
 
-						location.href="detpage.html?id="+$(this).attr('data-guid')
+                        $('.hello').click(function() {
+
+                            location.href = "detpage.html?id=" + $(this).attr('data-guid')
 
 
-					})
+                        })
 
 
 
@@ -335,83 +393,81 @@ define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, 
 
 
 
-		
 
-	
+
+
 
 
 
 
                 $('.preonli').hover(function() {
-                  
+
                     $('.preson').show();
                     console.log(88)
                 }, function() {
 
                     $('.preson').hide()
-                     console.log(99)
+                    console.log(99)
                 })
 
 
 
-				$('.gwczt').click(function(){
-						if($('.carbox').css('display') == 'none'){
-								$('.carbox').show();
-						}else{
-							$('.carbox').hide();
-						}
-
-						
-				})
+                $('.gwczt').click(function() {
+                    if ($('.carbox').css('display') == 'none') {
+                        $('.carbox').show();
+                    } else {
+                        $('.carbox').hide();
+                    }
 
 
-				
-
-			 
-
-			// goods.onclick = function(e){
-			// 	e = e || window.event;
-			// 	var target = e.target || e.srcElement;
-
-			// 	// 点击按钮添加
-			// 	if(target.tagName.toLowerCase() === 'button'){
-			// 		// 线获取当前li
-			// 		var currentLi = target.parentElement.parentElement;
-
-			// 		// 点击添加按钮时，是添加还是修改数量
-			// 		var currentGUID = currentLi.getAttribute('data-guid');
-
-			// 		// cookie中是否存在当前商品
-			// 		var hasGoods = false;
-			// 		for(var i=0;i<carlist.length;i++){
-			// 			if(carlist[i].guid === currentGUID){
-			// 				hasGoods = true;
-
-			// 				// 如果当前商品已经存在cookie中，则商品数量+1
-			// 				carlist[i].qty++;
-			// 				break;  //需要得到值就立即结束的情况，则用for循环，其他循环不能提前终止
-			// 			}
-			// 		}
-
-			// 		if(!hasGoods){
-						
-			// 			var goods = {
-			// 				guid:currentGUID,
-			// 				name:currentLi.children[1].innerText,
-			// 				price:currentLi.children[2].innerText,
-			// 				imgurl:currentLi.children[0].src,
-			// 				qty:1
-			// 			};
-
-			// 			// 把当前商品信息写入carlist
-			// 			carlist.push(goods);
-			// 		}
-
-			// 		setCookie('carlist',JSON.stringify(carlist));
-			// 	}
-			// }
+                })
 
 
+
+
+
+
+                // goods.onclick = function(e){
+                // 	e = e || window.event;
+                // 	var target = e.target || e.srcElement;
+
+                // 	// 点击按钮添加
+                // 	if(target.tagName.toLowerCase() === 'button'){
+                // 		// 线获取当前li
+                // 		var currentLi = target.parentElement.parentElement;
+
+                // 		// 点击添加按钮时，是添加还是修改数量
+                // 		var currentGUID = currentLi.getAttribute('data-guid');
+
+                // 		// cookie中是否存在当前商品
+                // 		var hasGoods = false;
+                // 		for(var i=0;i<carlist.length;i++){
+                // 			if(carlist[i].guid === currentGUID){
+                // 				hasGoods = true;
+
+                // 				// 如果当前商品已经存在cookie中，则商品数量+1
+                // 				carlist[i].qty++;
+                // 				break;  //需要得到值就立即结束的情况，则用for循环，其他循环不能提前终止
+                // 			}
+                // 		}
+
+                // 		if(!hasGoods){
+
+                // 			var goods = {
+                // 				guid:currentGUID,
+                // 				name:currentLi.children[1].innerText,
+                // 				price:currentLi.children[2].innerText,
+                // 				imgurl:currentLi.children[0].src,
+                // 				qty:1
+                // 			};
+
+                // 			// 把当前商品信息写入carlist
+                // 			carlist.push(goods);
+                // 		}
+
+                // 		setCookie('carlist',JSON.stringify(carlist));
+                // 	}
+                // }
 
 
 
@@ -427,7 +483,9 @@ define(['jquery', 'cookie', 'lazyload', 'carfly','common'], function($, cookie, 
 
 
 
-   })
+
+
+            })
 
 
 

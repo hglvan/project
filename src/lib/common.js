@@ -128,7 +128,7 @@ function addEvent(ele,type,handle,capture){
  * @param {[Date]} expires 	 [cookie有效期]
  * @param {[String]} path    [cookie保存路径]
  */
-function setCookie(name,val,expires,path){
+function setCook(name,val,expires,path){
 	var str = name + '=' + val;
 
 	if(expires){
@@ -145,7 +145,7 @@ function setCookie(name,val,expires,path){
 // setCookie('left',100);
 
 
-function getCookie(name){
+function getCook(name){
 	// 得到所有的cookie
 	var cookies = document.cookie;
 
