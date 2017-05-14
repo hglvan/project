@@ -21,6 +21,8 @@ requirejs.config({
         'common':'../lib/common'
        
     }
+    // ,
+    // waitSeconds:0
 
     
 })

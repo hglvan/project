@@ -9,6 +9,48 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
             $('header').load('../src/html/top.html', function() {
 
 
+
+
+            
+            // 打开主要购物车小窗口
+             $('.gwczt').click(function() {
+                    if ($('.carbox').css('display') == 'none') {
+                        $('.carbox').show();
+                    } else {
+                        $('.carbox').hide();
+                    }
+
+
+                        })
+
+
+
+
+                // 右侧导航条跟随效果
+
+                $(window).scroll(function() {
+                    console.log("我再滚")
+                    var scrollY = this.scrollY;
+                    if (scrollY > 300) {
+                        var target = parseInt((window.innerHeight - $(".sidebox").height()) / 2) + scrollY - 300;
+                        $(".sidebox").stop(true).slideDown();
+                        $(".sidebox").stop(true).animate({
+                                                "top": target
+                                    })
+
+                    } else {
+                        $(".sidebox").stop(true).slideUp('slow');
+                    }
+                })
+
+
+
+
+
+
+
+
+
                 if (getCookie('login')) {
                     var sCookie = getCookie('login');
                     var aUser = sCookie ? JSON.parse(sCookie) : [];
@@ -119,19 +161,12 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
             // 套路
             $(function() {
 
-                // 设置tab切换
+               
 
-                // $('table img').onload(function(){
 
-                $('.tab').on("mouseover", ">span", function() {
 
-                        var idx = $(this).index();
-                        $(this).addClass("tabbottom").css("color", "#00c8ff").siblings().removeClass("tabbottom").css("color", "")
-                        $('.tabimg').children().hide().eq(idx).show();
-                        $(".bigimg").attr("src", "../src/img/main/p" + idx + ".jpg")
-                    })
-                    // })
 
+            // 倒计时
                 // function addZero(i){
                 // 		if(i<10){
                 // 			i = "0" + i;
@@ -142,7 +177,7 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                 // (function showtime() {
 
                 // 	var nowtime = new Date();
-                // 	var endtime = new Date("2017/05/12");
+                // 	var endtime = new Date("2017/05/15");
                 // 	var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
                 // 	var d = parseInt(lefttime / (24 * 60 * 60));
                 // 	var h = parseInt(lefttime / (60 * 60) % 24);
@@ -161,7 +196,9 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                 // })()
 
 
-                //设置右侧导航条
+setTimeout(function(){
+
+                //设置左侧导航条
                 $('.sidebox').on('mouseover', 'li', function() {
 
                     $(this).addClass("side-active").siblings().removeClass("side-active");
@@ -179,31 +216,28 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                     })
 
                 })
+
                 $('.sidebox').on('mouseout', 'li', function() {
 
                     $(this).removeClass("side-active");
 
                 })
+},2000)
+
+                setTimeout(function(){
+                 // 设置tab切换
+
+                $('.tab').on("mouseover", ">span", function() {
+
+                        var idx = $(this).index();
+                        $(this).addClass("tabbottom").css("color", "#00c8ff").siblings().removeClass("tabbottom").css("color", "")
+                        $('.tabimg').children().hide().eq(idx).show();
+                        $(".bigimg").attr("src", "../src/img/main/p" + idx + ".jpg")
+                    })
+                  
+                },2000)
 
 
-
-                $(window).scroll(function() {
-                    var scrollY = this.scrollY;
-                    // console.log($(document).scrollTop())
-                    // console.log($('.sidebox').height())
-                    if (scrollY > 300) {
-                        var target = parseInt((window.innerHeight - $(".sidebox").height()) / 2) + scrollY - 300;
-                        $(".sidebox").stop(true).slideDown();
-                        // $(".sidebox").stop(true).animate({
-                        //                  		"top": target
-                        //             		 })
-
-                    } else {
-                        $(".sidebox").stop(true).slideUp('slow');
-                    }
-
-
-                })
 
 
 
@@ -242,16 +276,29 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                         }).join(""));
 
 
-                        //懒加载
-                        $(".hello").lazyload({
+                //懒加载
+                 $(".hello").lazyload({
                             effect: "fadeIn"
                         });
+
+
+             // 隐藏商品列表的主要特效
+            
+                $('.datalist').hover(function(){
+                   $(this).find('.yc').show();
+                    
+                },function(){
+                      $(this).find('.yc').hide()
+                })
+
+
+
 
 
 
 
                         // 购物车飞入效果
-        $('.buycar').on('click', function(event) {
+                $('.buycar').on('click', function(event) {
 
                             var img = $(this).parents('li').find('img').attr('src');
                             console.log(this)
@@ -281,8 +328,14 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
 		<div class="carimg"><img src="../src/img/main/1.jpg" ></div>
 		<div class="carbox_inp">
 		<p style="font-size:15px;margin-bottom:10px">贝德玛皙妍倍护防晒喷雾SPF30+200ml</p><span style="float:left;color:#ff643c;font-size:20px;">￥</span>
-		<span style="float:left;color:#ff643c;font-size:20px;margin-right:8px" class="listprice">${priceclone}</span><p class="car_k"><span style="float:left;color:#ccc">-</span><input type="text" class="carnum" value="0" ><span style="float:right;color:#ccc">+</span ></p><a class="cardel" style="float:left;color:#000;margin-left:5px;font-size:13px;height:24px;display:inline-block;line-height: 35px;cursor:pointer">删除</a></div>		
-		</li>`)
+		<span style="float:left;color:#ff643c;font-size:20px;margin-right:8px" class="listprice">${priceclone}</span><p class="car_k"><span style="float:left;color:#ccc">-</span><input type="text" class="carnum" value="1" ><span style="float:right;color:#ccc">+</span ></p><a class="cardel" style="float:left;color:#000;margin-left:5px;font-size:13px;height:24px;display:inline-block;line-height: 35px;cursor:pointer">删除</a></div>		
+		</li>`);
+
+
+                             // $('.carboxlist li').each(function(idx,item){
+                                    
+
+                             // })
 
                             $('.carboxlist').append(oli);
                             oli = oli.find('img').attr("src", imgclone).find('.listprice').html(priceclone);
@@ -376,10 +429,10 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
 
 
 
+                    // 点击商品,打开该详情页
+                    $('.hello').click(function() {
 
-                        $('.hello').click(function() {
-
-                            location.href = "detpage.html?id=" + $(this).attr('data-guid')
+                            window.open("detpage.html?id=" + $(this).attr('data-guid'),"_blank")
 
 
                         })
@@ -390,12 +443,6 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
 
                     }
                 })
-
-
-
-
-
-
 
 
 
@@ -412,76 +459,7 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
 
 
 
-                $('.gwczt').click(function() {
-                    if ($('.carbox').css('display') == 'none') {
-                        $('.carbox').show();
-                    } else {
-                        $('.carbox').hide();
-                    }
-
-
-                })
-
-
-
-
-
-
-                // goods.onclick = function(e){
-                // 	e = e || window.event;
-                // 	var target = e.target || e.srcElement;
-
-                // 	// 点击按钮添加
-                // 	if(target.tagName.toLowerCase() === 'button'){
-                // 		// 线获取当前li
-                // 		var currentLi = target.parentElement.parentElement;
-
-                // 		// 点击添加按钮时，是添加还是修改数量
-                // 		var currentGUID = currentLi.getAttribute('data-guid');
-
-                // 		// cookie中是否存在当前商品
-                // 		var hasGoods = false;
-                // 		for(var i=0;i<carlist.length;i++){
-                // 			if(carlist[i].guid === currentGUID){
-                // 				hasGoods = true;
-
-                // 				// 如果当前商品已经存在cookie中，则商品数量+1
-                // 				carlist[i].qty++;
-                // 				break;  //需要得到值就立即结束的情况，则用for循环，其他循环不能提前终止
-                // 			}
-                // 		}
-
-                // 		if(!hasGoods){
-
-                // 			var goods = {
-                // 				guid:currentGUID,
-                // 				name:currentLi.children[1].innerText,
-                // 				price:currentLi.children[2].innerText,
-                // 				imgurl:currentLi.children[0].src,
-                // 				qty:1
-                // 			};
-
-                // 			// 把当前商品信息写入carlist
-                // 			carlist.push(goods);
-                // 		}
-
-                // 		setCookie('carlist',JSON.stringify(carlist));
-                // 	}
-                // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          
 
 
 

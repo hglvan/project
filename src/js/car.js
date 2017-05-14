@@ -13,6 +13,21 @@ define(['jquery','cookie'], function($,cookie) {
                 var $img = $("<div class='bdimg' style='float:right'><img src='img/car/1.png'></div>")
                 $(".top_c").append($img)
 
+             if (getCookie('login')) {
+                    var sCookie = getCookie('login');
+                    var aUser = sCookie ? JSON.parse(sCookie) : [];
+                    $('#login').attr("href", "").html('<span>欢迎您:<span style="color:#00c8ff">' + aUser.username + '</span></span><a href="#" id="out">[退出]</a>');
+
+                }
+                 $('#out').click(function() {
+                    console.log(1111)
+
+                    // cookie.removeCookie('login');
+                    removeCookie('login');
+                    location.href = "../src/car.html";
+
+                })
+
 
 
 
@@ -72,9 +87,9 @@ define(['jquery','cookie'], function($,cookie) {
                         <div class="cargoods_right clear">
                             <span style="color:red" class="je">${item.price}</span>
                             <span style="border: 1px solid #ccc;height:30px;width:62px;text-align:center;margin-bottom:-9px" class="clear">
-                            <i style="color:#ccc;float:left">-</i><input type="text" class="carnum" value="1" style="width:20px;text-align:center;height:28px;float:left;border:none" ><i style="color:#ccc;float:left">+</i >
+                            <i style="color:#ccc;float:left">-</i><input type="text" class="carnum" value="${item.qty}" style="width:20px;text-align:center;height:28px;float:left;border:none" ><i style="color:#ccc;float:left">+</i >
                             </span>
-                            <span>56</span><span>674</span><span class="car_del" style="cursor:pointer">删除</span>
+                            <span>霸位符</span><span>674</span><span class="car_del" style="cursor:pointer">删除</span>
 
                         </div>
                         
@@ -84,18 +99,18 @@ define(['jquery','cookie'], function($,cookie) {
             }).join(''));
     
                 var ze = 0;
-                var num;
+                var num =0;
                 $('.sq').each(function(idx,item){
-
-                        ze += parseInt($(item).find('.je').html())
+                    console.log($(item).find('.carnum').val())
+                        ze += (parseInt($(item).find('.je').html())*($(item).find('.carnum').val()))
                         // console.log
-                        num = idx;
+                        num  +=($(item).find('.carnum').val()-0);
 
                 })
                 
               
                 $('.zjs').html(ze);
-               $('.spze').html($('.sq').length);
+               $('.spze').html(num);
 
                // 删除节点
                $('.car_del').click(function(){
@@ -113,19 +128,29 @@ define(['jquery','cookie'], function($,cookie) {
 
                     // 删除后重写cookie
                      setCookie('carlist',JSON.stringify(goodslist),5,'/');
-                    $('.sq').each(function(idx,item){
-
-                      
-                        num = idx;
-                    })
+                    // 重新计算被删除的商品数
+                    num  -=  $(this).parents('.sq').find('.carnum').val();
+                
                         console.log(ze)
-                        console.log(parseInt($(this).parents('li').find('.je').html()))
-                        ze = ze - parseInt($(this).parents('li').find('.je').html())
-
-                      $('.zjs').html(ze);
-                    $('.spze').html($('.sq').length);
+                        // console.log(parseInt($(this).parents('li').find('.je').html()))
+                        ze = ze - parseInt($(this).parents('li').find('.je').html() * $(this).parents('li').find('.carnum').val())
+                        console.log(ze)
+                        $('.zjs').html(ze);
+                        $('.spze').html(num);
 
                })
+
+                // 全部清空
+
+                $('.allclear').click(function(){
+
+                        $('.carl').remove();
+                          $('.zjs').html(0);
+                        $('.spze').html(0);
+                        removeCookie('carlist')
+
+
+                })
 
 
 

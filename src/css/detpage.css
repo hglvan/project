@@ -315,3 +315,8 @@ i {
   width: 100px;
   vertical-align: top;
 }
+
+.test {
+  background: #f6f6f3;
+  height: 30px;
+}

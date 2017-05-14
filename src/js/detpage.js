@@ -20,7 +20,8 @@ define(['jquery','cookie','gdszoom'], function($,cookie,gdszoom) {
 
                     // cookie.removeCookie('login');
                     removeCookie('login');
-                    location.href = "../src/index.html";
+                    // location.href = "../src/detpage.html";
+                    location.reload();
 
                 })
 
@@ -90,12 +91,52 @@ define(['jquery','cookie','gdszoom'], function($,cookie,gdszoom) {
             })
 
 
+            
 
-            $('main').load('../src/html/det_page.html', function() {
+
+
+     $('main').load('../src/html/det_page.html', function() {
 
              
          $(function(){
-            console.log($('.zoom'))
+
+              // 倒计时
+                // function addZero(i){
+                //         if(i<10){
+                //             i = "0" + i;
+                //         }
+                //             return i;
+                //         }
+
+                // (function showtime() {
+
+                //     var nowtime = new Date();
+                //     var endtime = new Date("2017/05/15");
+                //     var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
+                //     var d = parseInt(lefttime / (24 * 60 * 60));
+                //     var h = parseInt(lefttime / (60 * 60) % 24);
+                //     var m = parseInt(lefttime / 60 % 60);
+                //     var s = parseInt(lefttime % 60);
+                //     h = addZero(h);
+                //     m = addZero(m);
+                //     s = addZero(s);
+                //     $(".buytime").html( d + "天" + h + "小时" + m + "分" + s+"秒").css("color","red");
+                //     if(lefttime<=0){
+                //         clearInterval(time)
+                //     $(".buytime").html("活动已结束");
+                //         return;
+                //     }
+                //     var time = setInterval(showtime,1000);
+                // })()
+
+
+
+
+
+
+
+
+
             $('.zoom').gdszoom({
                 position:'right'
             });
@@ -155,12 +196,12 @@ define(['jquery','cookie','gdszoom'], function($,cookie,gdszoom) {
                             // $('.a1_img').html(a1_img);
                             // $('.a2_img').html(a2_img);
                             // $('.a3_img').html(a3_img);
-                            $('.zoom img').attr('src',oJson[i].imgurl);
+                            $('.zoom img').attr('src',oJson[i].imgurl).attr('data-big','../src/img/detpage/big'+oJson[i].id+'.jpg');
                              $('.det_pirce span').eq(1).html(oJson[i].price)
                         }
                     }
                 }
-            // })
+          
 
 
 

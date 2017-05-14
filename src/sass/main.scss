@@ -1,8 +1,15 @@
+
+body{
+
+/*background:#f6f6f3;*/
+}
+
 /*设置内容整体颜色*/
 main{
   background:#f6f6f3;
   /*height:1500px;*/
   min-width:1100px;
+  /*margin-bottom:50px;*/
 }
 
 .content{
@@ -207,7 +214,7 @@ main{
 		
 		.goods_msg{
 			width:350px;
-			height:160px;
+			height:170px;
 			background:#fff;
 			padding: 18px 20px;
 			padding-top:20px;
@@ -271,6 +278,7 @@ main{
         position:absolute;
         bottom:0;
         left:20%;
+        display:none;
         a{
         	color:#00c8ff;
         	margin-right: 15px;
@@ -342,4 +350,9 @@ main{
 	width:60px;
 	height:60px;
 	border-radius:50%;
+}
+
+.test{
+	background:#f6f6f3;
+	height:30px;
 }

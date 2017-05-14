@@ -359,7 +359,7 @@ h3 {
 
 .carbox .carboxlist {
   overflow-y: auto;
-  height: 300px;
+  height: 350px;
 }
 
 .carbox h3 {
@@ -401,7 +401,7 @@ h3 {
 }
 
 .carbox .carboxlist .carbox_inp .car_k {
-  width: 50px;
+  width: 55px;
   height: 24px;
   float: left;
   border: 1px #e4e4e4 solid;
@@ -438,6 +438,12 @@ h3 {
   border: none;
   background: #ff643c;
   cursor: pointer;
+}
+
+.carbox .backgroudbox {
+  margin-top: 20px;
+  height: 156px;
+  background: url("../img/header/empty.png") no-repeat center;
 }
 
 .close {
