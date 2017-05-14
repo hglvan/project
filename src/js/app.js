@@ -46,8 +46,9 @@ require(["jquery","index","register","login","detpage","car"],function($,index,r
             detpage.init()
     }else if(path=="/project/src/car.html"){
             car.init()
-
-
+ }else{
+  index.init();
+  
  }
    //  if(path=="/tugouwang/app/index/index.html"){
    //      index_tgw.init();

@@ -9,57 +9,16 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
             $('header').load('../src/html/top.html', function() {
 
 
-
-
-            
-            // 打开主要购物车小窗口
-             $('.gwczt').click(function() {
-                    if ($('.carbox').css('display') == 'none') {
-                        $('.carbox').show();
-                    } else {
-                        $('.carbox').hide();
-                    }
-
-
-                        })
-
-
-
-
-                // 右侧导航条跟随效果
-
-                $(window).scroll(function() {
-                    console.log("我再滚")
-                    var scrollY = this.scrollY;
-                    if (scrollY > 300) {
-                        var target = parseInt((window.innerHeight - $(".sidebox").height()) / 2) + scrollY - 300;
-                        $(".sidebox").stop(true).slideDown();
-                        $(".sidebox").stop(true).animate({
-                                                "top": target
-                                    })
-
-                    } else {
-                        $(".sidebox").stop(true).slideUp('slow');
-                    }
-                })
-
-
-
-
-
-
-
-
-
+                // 读取登录用户信息
                 if (getCookie('login')) {
                     var sCookie = getCookie('login');
                     var aUser = sCookie ? JSON.parse(sCookie) : [];
                     $('#login').attr("href", "").html('<span>欢迎您:<span style="color:#00c8ff">' + aUser.username + '</span></span><a href="#" id="out">[退出]</a>');
 
                 }
+                // 退出登录信息
                 $('#out').click(function() {
                     console.log(1111)
-
                     // cookie.removeCookie('login');
                     removeCookie('login');
                     location.href = "../src/index.html";
@@ -68,30 +27,30 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
 
 
 
-                //设置下拉微信
+                //设置下拉微信动画效果
                 $(".uu").hover(function() {
 
-                        $(".wx").stop(true).slideDown();
+                    $(".wx").stop(true).slideDown();
 
                     }, function() {
 
                         $('.wx').slideUp();
-                    })
-                    //设置下拉我的小锅
+                })
+                //设置下拉我的小锅
                 $(".home").hover(function() {
 
                         $(".xg").stop(true).slideDown();
 
-                    }, function() {
+                     }, function() {
 
                         $('.xg').slideUp();
-                    })
-                    //设置我的下拉服务
+                 })
+                //设置我的下拉服务
                 $(".server").hover(function() {
 
                     $(".myserver").stop(true).slideDown();
 
-                }, function() {
+                    }, function() {
 
                     $('.myserver').slideUp();
                 })
@@ -101,38 +60,40 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                 $(".sz").hover(function() {
 
                     $(this).find("img").attr("src", "../src/img/header/home_overseas_current.gif")
-                }, function() {
+                  }, function() {
 
                     $(this).find("img").attr("src", "../src/img/header/home_overseas.gif")
                 })
 
 
-                //设置下拉菜单             
+                //设置大型下拉菜单             
                 $(".na").hover(function() {
                     $(this).addClass('top_f_active');
                     $(".navlist").stop(true).slideDown();
-                }, function() {
+                 }, function() {
                     $(this).removeClass('top_f_active');
                     $(".navlist").slideUp();
                 })
 
 
 
-                //设置导航条右侧
+                //设置菜单栏右侧
                 $('.top_f_r').find("li").hover(function() {
 
                     $(this).stop(true).animate({
                         "width": 130
                     })
-                }, function() {
+                 }, function() {
                     $(this).stop(true).animate({
                         "width": 27
                     })
+                 })
                 })
-            })
 
-            // 2、加载内容
+            // 2、加载main内容
             $('main').load('../src/html/index_main.html', function() {
+
+                // 轮播图
                 var currentIndex = 0,
                     time = 3000,
                     length = $('.images').length;
@@ -152,8 +113,7 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                 }
 
                 setInterval(next, time);
-            })
-
+            
 
 
 
@@ -161,8 +121,33 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
             // 套路
             $(function() {
 
-               
 
+
+            // 打开主要购物车小窗口
+             $('.gwczt').click(function() {
+                    if ($('.carbox').css('display') == 'none') {
+                        $('.carbox').show();
+                    } else {
+                        $('.carbox').hide();
+                    }
+                })
+
+
+                // 右侧导航条跟随效果
+
+                $(window).scroll(function() {
+                    console.log("我再滚")
+                    var scrollY = this.scrollY;
+                    if (scrollY > 300) {
+                        var target = parseInt((window.innerHeight - $(".sidebox").height()) / 2) + scrollY - 300;
+                        $(".sidebox").stop(true).slideDown();
+                        $(".sidebox").stop(true).animate({
+                                         "top": target
+                                    })
+                    } else {
+                        $(".sidebox").stop(true).slideUp('slow');
+                    }
+                })
 
 
 
@@ -177,7 +162,7 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                 // (function showtime() {
 
                 // 	var nowtime = new Date();
-                // 	var endtime = new Date("2017/05/15");
+                // 	var endtime = new Date("2017/05/17");
                 // 	var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
                 // 	var d = parseInt(lefttime / (24 * 60 * 60));
                 // 	var h = parseInt(lefttime / (60 * 60) % 24);
@@ -196,7 +181,7 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
                 // })()
 
 
-setTimeout(function(){
+// setTimeout(function(){
 
                 //设置左侧导航条
                 $('.sidebox').on('mouseover', 'li', function() {
@@ -222,9 +207,9 @@ setTimeout(function(){
                     $(this).removeClass("side-active");
 
                 })
-},2000)
+// },2000)
 
-                setTimeout(function(){
+                // setTimeout(function(){
                  // 设置tab切换
 
                 $('.tab').on("mouseover", ">span", function() {
@@ -235,7 +220,7 @@ setTimeout(function(){
                         $(".bigimg").attr("src", "../src/img/main/p" + idx + ".jpg")
                     })
                   
-                },2000)
+                // },2000)
 
 
 
@@ -247,33 +232,32 @@ setTimeout(function(){
                     type: "get",
                     url: "../src/php/goodslist.php",
                     dataType: "json",
-                    success: function(data) {
+                    success: function(data) {                      
+                    $('.goodsul').html($.map(data, function(item) { //jQ中map遍历
 
-                        $('.goodsul').html($.map(data, function(item) { //jQ中map遍历
+                        return `<li class="datalist">
 
-                            return `<li class="datalist">
+            			<div class="goods_img">
+            			<img data-original="${item.imgurl}" height="350" width="350" alt="" class="hello" data-guid="${item.id}">
+            			<p class="yc"><a href="#">清洁</a><a href="#">保湿</a><a href="#">润肤</a></p>
+            			</div>
+            			<div class="goods_msg">
+            				<p>${item.name}</p>
+            				<div class="goods_buy clear">
+            					<p class="goods_buy_l"><i>￥</i><span class="jiage">${item.price}</span></p>
+            					<p class="goods_buy_r"><button class="goods_car buycar">加入购物车</button></p>
 
-			<div class="goods_img">
-			<img data-original="${item.imgurl}" height="350" width="350" alt="" class="hello" data-guid="${item.id}">
-			<p class="yc"><a href="#">清洁</a><a href="#">保湿</a><a href="#">润肤</a></p>
-			</div>
-			<div class="goods_msg">
-				<p>${item.name}</p>
-				<div class="goods_buy clear">
-					<p class="goods_buy_l"><i>￥</i><span class="jiage">${item.price}</span></p>
-					<p class="goods_buy_r"><button class="goods_car buycar">加入购物车</button></p>
-
-				</div>
-					<div class="tg">
-					<p class="tg_l" style="float:left">
-					<i></i><i>距团购结束</i><i class="buytime"></i></p>
-					<p class="tg_r" style="float:right">
-						<i>342人已购买</i>
-					</p>
-					</div>
-			</div>
-		</li>`
-                        }).join(""));
+            				</div>
+            					<div class="tg">
+            					<p class="tg_l" style="float:left">
+            					<i></i><i>距团购结束</i><i class="buytime"></i></p>
+            					<p class="tg_r" style="float:right">
+            						<i>342人已购买</i>
+            					</p>
+            					</div>
+            			</div>
+            		    </li>`
+                    }).join(""));
 
 
                 //懒加载
@@ -282,28 +266,25 @@ setTimeout(function(){
                         });
 
 
-             // 隐藏商品列表的主要特效
+                 // 隐藏商品列表的主要特效
             
                 $('.datalist').hover(function(){
                    $(this).find('.yc').show();
                     
-                },function(){
+                    },function(){
                       $(this).find('.yc').hide()
                 })
 
 
 
 
+            // 购物车飞入效果
+            $('.buycar').on('click', function(event) {
 
-
-
-                        // 购物车飞入效果
-                $('.buycar').on('click', function(event) {
-
-                            var img = $(this).parents('li').find('img').attr('src');
-                            console.log(this)
-                            var offset = $('#end').offset(),
-                                flyer = $('<img class="u-flyer" src="' + img + '"/>');
+                     var img = $(this).parents('li').find('img').attr('src');
+                    console.log(this)
+                    var offset = $('#end').offset(),
+                    flyer = $('<img class="u-flyer" src="' + img + '"/>');
                             flyer.fly({
                                 start: {
                                     left: event.clientX,
@@ -316,7 +297,7 @@ setTimeout(function(){
                                         // height: 20
                                 }
                             });
-
+                            // 计算购物车件数
                             var js = $('.js').html();
                             js++;
                             $('.js').html(js);
@@ -413,9 +394,6 @@ setTimeout(function(){
                     setCookie('carlist',JSON.stringify(carlist),5,'/');
                     
 					
-				
-		
-
 
               })
 
@@ -451,7 +429,7 @@ setTimeout(function(){
 
                     $('.preson').show();
                     console.log(88)
-                }, function() {
+                  }, function() {
 
                     $('.preson').hide()
                     console.log(99)
@@ -459,24 +437,10 @@ setTimeout(function(){
 
 
 
-          
-
-
-
             })
 
 
-
-
-
-
-
-
-
-
-
-
-
+ })
 
 
 
