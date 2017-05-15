@@ -10,12 +10,15 @@
         //连接数据库
         $conn = new mysqli($servername,$username,$password,$database);
 
+
         // 检测连接
         if($conn->connect_error){
             die('连接失败'.$conn->connect_error);
         }
 
-        $conn->set_charset('utf8');
+        // $conn->set_charset('utf8');
+         // $con -> query("SET NAMES utf8");
+
         return $conn;
     }
 
@@ -38,7 +41,8 @@
         $dbname = 'zwyz'; 
         //初始化连接，返回一个连接对象(包含所连接数据库的信息)
         $con = mysqli_connect($servername,$username,$password,$dbname); 
-
+        // $conn->set_charset('utf8');
+        $con -> query("SET NAMES utf8");  //转码成中文
         //获取连接对象的错误信息
         if (mysqli_connect_error($con)) 
         { 

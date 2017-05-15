@@ -108,10 +108,10 @@ define(['jquery','cookie','gdszoom'], function($,cookie,gdszoom) {
                             return i;
                         }
 
-                (function showtime() {
+                function showtime() {
 
                     var nowtime = new Date();
-                    var endtime = new Date("2017/05/15");
+                    var endtime = new Date("2017/05/17");
                     var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
                     var d = parseInt(lefttime / (24 * 60 * 60));
                     var h = parseInt(lefttime / (60 * 60) % 24);
@@ -126,8 +126,9 @@ define(['jquery','cookie','gdszoom'], function($,cookie,gdszoom) {
                     $(".buytime").html("活动已结束");
                         return;
                     }
-                    var time = setInterval(showtime,1000);
-                })()
+                    
+                }
+                var time = setInterval(showtime,1000);
 
 
 

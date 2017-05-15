@@ -17,8 +17,8 @@ requirejs.config({
         'cookie':'../lib/cookiebase',
         'lazyload':'../lib/jquery.lazyload',
         'carfly'  : '../lib/jquery.fly.min',
-        'gdszoom':'../lib/jquery.gdszoom',
-        'common':'../lib/common'
+        'gdszoom':'../lib/jquery.gdszoom'
+        // 'common':'../lib/common'
        
     }
     // ,
@@ -50,18 +50,7 @@ require(["jquery","index","register","login","detpage","car"],function($,index,r
   index.init();
   
  }
-   //  if(path=="/tugouwang/app/index/index.html"){
-   //      index_tgw.init();
-   //  }else if(path=="/tugouwang/app/page/register.html"){
-   //       // registerPage.init(); //没必要要了，集中到register了
-   //       register.init();
-        
-   //  }else if(path=="/tugouwang/app/page/login.html"){
-   //          loginPage.init()
-   //  }
-   // else{
-   //      index_tgw.init();
-   //  }
+   
     //如果想要添加新的页面
 
     //1 建一个文件夹 放入index.html

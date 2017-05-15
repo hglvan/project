@@ -7,7 +7,7 @@ define(['jquery','cookie'], function($,cookie) {
 
             // 加载公共头部
             $('header').load('../src/html/top.html', function() {
-
+                
                 // 移出头部多余节点
                 $(".top_f,.search,.cart,.rightcar").remove();
                 var $img = $("<div class='bdimg'><img src='img/register/tipinfo1.jpg'></div>")
@@ -111,7 +111,7 @@ define(['jquery','cookie'], function($,cookie) {
                                         };
                                             
                                 // cookie.setCookie('login', JSON.stringify(user), 7, '/');
-                                setCookie('login', JSON.stringify(user), 7, '/');
+                                setCookie('login', JSON.stringify(user), 5, '/');
                                 location.href = "../src/index.html?username="+bal1;
                                 } else {
                                     alert("登录失败,请重新检查信息");

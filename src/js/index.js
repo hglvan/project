@@ -152,34 +152,34 @@ define(['jquery', 'cookie', 'lazyload', 'carfly'], function($, cookie, lazyload,
 
 
             // 倒计时
-                // function addZero(i){
-                // 		if(i<10){
-                // 			i = "0" + i;
-                // 		}
-                // 			return i;
-                // 		}
+                function addZero(i){
+                		if(i<10){
+                			i = "0" + i;
+                		}
+                			return i;
+                		}
 
-                // (function showtime() {
+                function showtime() {
 
-                // 	var nowtime = new Date();
-                // 	var endtime = new Date("2017/05/17");
-                // 	var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
-                // 	var d = parseInt(lefttime / (24 * 60 * 60));
-                // 	var h = parseInt(lefttime / (60 * 60) % 24);
-                // 	var m = parseInt(lefttime / 60 % 60);
-                // 	var s = parseInt(lefttime % 60);
-                // 	h = addZero(h);
-                // 	m = addZero(m);
-                // 	s = addZero(s);
-                // 	$(".buytime").html( d + "天" + h + "小时" + m + "分" + s+"秒");
-                // 	if(lefttime<=0){
-                // 	    clearInterval(time)
-                // 	$(".buytime").html("活动已结束");
-                // 	    return;
-                // 	}
-                // 	var time = setInterval(showtime,1000);
-                // })()
-
+                	var nowtime = new Date();
+                	var endtime = new Date("2017/05/17");
+                	var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
+                	var d = parseInt(lefttime / (24 * 60 * 60));
+                	var h = parseInt(lefttime / (60 * 60) % 24);
+                	var m = parseInt(lefttime / 60 % 60);
+                	var s = parseInt(lefttime % 60);
+                	h = addZero(h);
+                	m = addZero(m);
+                	s = addZero(s);
+                	$(".buytime").html( d + "天" + h + "小时" + m + "分" + s+"秒");
+                	if(lefttime<=0){
+                	    clearInterval(time)
+                	$(".buytime").html("活动已结束");
+                	    return;
+                	}
+                	
+                }
+                var time = setInterval(showtime,1000);
 
 // setTimeout(function(){
 

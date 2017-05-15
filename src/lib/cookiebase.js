@@ -56,7 +56,7 @@ function getCookie(name){
 		if(newArr[0]==name){
 			//return  newArr[1]
 			
-			return newArr[1];
+			return decodeURIComponent(newArr[1]);
 		}
 	}
 //	alert("此cookie不存在");
@@ -68,7 +68,7 @@ function setCookie(name,value,expires,path){
 	if(name!=undefined &&value!=undefined){
 		//str+=name+"="+value;
 		
-		str += name+"=" + value ;
+		str += name+"=" + encodeURIComponent( value ) ;
 //					document.cookie = str;
 		if(expires){
 			//expires  需要保存的时间  7 表示保存7天
